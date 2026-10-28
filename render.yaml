@@ -1,0 +1,10 @@
+# Render Blueprint: one Node web service that builds the site and serves it.
+# Render reads this when you choose New + > Blueprint and pick your repo.
+services:
+  - type: web
+    name: add-guild
+    runtime: node
+    plan: free
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: node server.js
+    healthCheckPath: /healthz
